@@ -1,6 +1,5 @@
 const path = require('path')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const BundleAnaylzer = require('webpack-bundle-analyzer')
 const resolve = dir => {
   return path.join(__dirname, dir)
 }
@@ -27,10 +26,6 @@ module.exports = {
       symbolId: 'icon-[name]'
     })
 
-    //打包可视化分析
-    config.
-      plugin('webpack-bundle-analyzer').
-      use(BundleAnaylzer.BundleAnalyzerPlugin)
   },
   configureWebpack(config) {
     if (process.env.NODE_ENV !== 'development') {
