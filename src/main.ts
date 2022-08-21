@@ -2,8 +2,8 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import { store } from './store'
-import '@/assets/svg/index'
-import svgIcon from '@/assets/svg/index.vue'
+import '@/assets/icons'
+import svgIcon from '@/components/icon.vue'
 
 const app = createApp(App)
 app.use(store)
