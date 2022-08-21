@@ -8,7 +8,8 @@ module.exports = {
   // 基础路径
   publicPath: './',
   // 输出目录
-  outputDir: process.env.outputDir,
+  // outputDir: process.env.outputDir,
+  outputDir: 'docs',
   // 资源目录
   // assetsDir: "static",
   productionSourceMap: false,
