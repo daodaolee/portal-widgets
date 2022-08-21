@@ -22,28 +22,30 @@ module.exports = {
 
     // const svgRule = config.module.rule('svg')
     // svgRule.uses.clear()
-    // svgRule
-    //   .test(/\.svg$/)
-    //   .exclude.add(resolve("src/icons"))
-    //   .use('svg-sprite-loader')
-    //   .loader('svg-sprite-loader')
-    //   .options({
-    //     symbolId: 'icon-[name]'
+    // svgRule.
+    //   test(/\.svg$/).
+    //   include.add(resolve('./src/assets/icons')).
+    //   end().
+    //   use('svg-sprite-loader').
+    //   loader('svg-sprite-loader').
+    //   tap(options => {
+    //     options = {
+    //       symbolId: 'icon-[name]'
+    //     }
+    //     return options
     //   })
-    const svgRule = config.module.rule('svg')
-    svgRule.uses.clear()
-    svgRule.
+    config.module.rule('svg').exclude.add(resolve('src/icons')).end()
+    config.module.
+      rule('icons').
       test(/\.svg$/).
-      include.add(resolve('./src/assets/icons')).
+      include.add(resolve('src/icons')).
       end().
       use('svg-sprite-loader').
       loader('svg-sprite-loader').
-      tap(options => {
-        options = {
-          symbolId: 'icon-[name]'
-        }
-        return options
-      })
+      options({
+        symbolId: 'icon-[name]'
+      }).
+      end()
   },
   configureWebpack(config) {
     if (process.env.NODE_ENV !== 'development') {
