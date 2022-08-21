@@ -1,7 +1,7 @@
 const path = require('path')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const BundleAnaylzer = require('webpack-bundle-analyzer')
-const resolve = (dir) => {
+const resolve = dir => {
   return path.join(__dirname, dir)
 }
 
@@ -14,11 +14,18 @@ module.exports = {
   // assetsDir: "static",
   productionSourceMap: false,
   chainWebpack(config) {
-    config.resolve.alias.
+    const alias = config.resolve.alias
+    alias.
       set('@$', resolve('src')).
       set('assets', resolve('src/assets')).
       set('components', resolve('src/components')).
       set('utils', resolve('src/utils'))
+
+    const svgRule = config.module.rule('svg')
+    svgRule.uses.clear()
+    svgRule.use('svg-sprite-loader').loader('svg-sprite-loader').options({
+      symbolId: 'icon-[name]'
+    })
 
     //打包可视化分析
     config.
