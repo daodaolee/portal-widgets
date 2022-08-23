@@ -4,13 +4,13 @@
       <div class="container-search flex flex-center">
         <div class="container-search-box flex flex-center">
           <div class="prefix flex-1 flex flex-center">
-            <svg-icon :class="currentEngine.svg" :name="currentEngine.svg" :title="currentEngine.title"
+            <svg-icon :name="currentEngine.svg" :title="currentEngine.title"
               @click="checkEngineStatus" />
             <div class="container-search-engine">
               <div :class="['container-search-engine-item', showEngineList ? 'active' : '']"
                 v-for="engine in enginesList" :key="engine.title"
                 @click="currentEngine = engine; showEngineList = false">
-                <svg-icon :class="engine.svg" :name="engine.svg" :title="engine.title" />
+                <svg-icon :name="engine.svg" :title="engine.title" />
               </div>
             </div>
           </div>
@@ -25,7 +25,7 @@
       <div class="container-widget flex">
         <div class="container-widget-item flex flex-center flex-1" v-for="(widget, index) in widgets" :key="index">
           <!-- {{ widget.title }} -->
-          <svg-icon :class="widget.svg" :name="widget.svg" :title="widget.title" @click="toWidget(widget)" />
+          <svg-icon :name="widget.svg" :title="widget.title" @click="toWidget(widget)" />
         </div>
       </div>
     </div>

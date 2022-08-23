@@ -1,5 +1,5 @@
 const path = require('path')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+// const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const resolve = dir => {
   return path.join(__dirname, dir)
 }
@@ -20,20 +20,6 @@ module.exports = {
       set('components', resolve('src/components')).
       set('utils', resolve('src/utils'))
 
-    // const svgRule = config.module.rule('svg')
-    // svgRule.uses.clear()
-    // svgRule.
-    //   test(/\.svg$/).
-    //   include.add(resolve('./src/assets/icons')).
-    //   end().
-    //   use('svg-sprite-loader').
-    //   loader('svg-sprite-loader').
-    //   tap(options => {
-    //     options = {
-    //       symbolId: 'icon-[name]'
-    //     }
-    //     return options
-    //   })
     config.module.rule('svg').exclude.add(resolve('src/icons')).end()
     config.module.
       rule('icons').
@@ -47,28 +33,22 @@ module.exports = {
       }).
       end()
   },
-  configureWebpack(config) {
+  configureWebpack() {
     if (process.env.NODE_ENV !== 'development') {
-      config.plugins.push(
-        new UglifyJsPlugin({
-          uglifyOptions: {
-            warnings: false,
-            compress: {
-              drop_debugger: true,
-              drop_console: true,
-              pure_funcs: ['console.log']
-            }
-          },
-          sourceMap: false,
-          parallel: true
-        })
-      )
-    }
-  },
-  pluginOptions: {
-    'style-resources-loader': {
-      preProcessor: 'less',
-      patterns: [path.resolve(__dirname, './src/assets/css/*.less')] //填写公共文件路径
+      // config.plugins.push(
+      //   new UglifyJsPlugin({
+      //     uglifyOptions: {
+      //       warnings: false,
+      //       compress: {
+      //         drop_debugger: true,
+      //         drop_console: true,
+      //         pure_funcs: ['console.log']
+      //       }
+      //     },
+      //     sourceMap: false,
+      //     parallel: true
+      //   })
+      // )
     }
   }
 }

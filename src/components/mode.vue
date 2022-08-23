@@ -1,6 +1,6 @@
 <template>
   <div class="mode">
-    <svg-icon :class="isDark ? 'moon' : 'sun'" :name="isDark ? 'moon' : 'sun'" title="切换主题" @click="toggleDark()" />
+    <svg-icon :name="isDark ? 'moon' : 'sun'" title="切换主题" @click="toggleDark()" />
   </div>
 </template>
 <script lang="ts" setup>
