@@ -1,6 +1,6 @@
 <template>
   <div class="weather">
-    <div class="weather-now flex flex-center flex-column">
+    <div class="weather-now flex flex-center flex-column" @click="toWeather">
       <svg-icon :name="currentWeatherMode[nowData.weather]" />
       <span>{{ nowData.temperature || "-" }}℃</span>
     </div>
@@ -58,8 +58,12 @@ getAdcode().then(adcode => {
     getWeatherRange(adcode)
     getWeaterNow(adcode)
   }
-
 })
+
+function toWeather() {
+  window.open("https://www.baidu.com/s?tn=68018901_2_oem_dg&ie=utf-8&wd=天气", '_blank')
+}
+
 
 
 </script>

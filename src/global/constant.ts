@@ -54,26 +54,42 @@ export const engines = [{
 export const weatherRange = {
   day: {
     '晴': 'weatherDaySun',
+
     '多云': 'weatherDayCloudy',
+    '阴': 'weatherDayCloudy',
 
     '小雨': 'weatherDayRain',
     '小雨-中雨': 'weatherDayRain',
     '中雨': 'weatherDayRain',
     '雷阵雨': 'weatherDayRain',
 
-    '下雪': 'weatherDaySnow',
+    '小雪': 'weatherDaySnow',
+    '小雪-中雪': 'weatherDaySnow',
+    '中雪': 'weatherDaySnow',
+    '中雪-大雪': 'weatherDaySnow',
+    '大雪': 'weatherDaySnow',
+
     '冰雹': 'weatherDayHail'
   },
   night: {
     '晴': 'weatherNightSun',
+
     '多云': 'weatherNightCloudy',
+    '阴': 'weatherNightCloudy',
 
     '小雨': 'weatherNightRain',
     '小雨-中雨': 'weatherNightRain',
     '中雨': 'weatherNightRain',
+    '中雨-大雨': 'weatherNightRain',
+    '大雨': 'weatherNightRain',
     '雷阵雨': 'weatherNightRain',
 
-    '下雪': 'weatherNightSnow',
+    '小雪': 'weatherNightSnow',
+    '小雪-中雪': 'weatherNightSnow',
+    '中雪': 'weatherNightSnow',
+    '中雪-大雪': 'weatherNightSnow',
+    '大雪': 'weatherNightSnow',
+
     '冰雹': 'weatherNightHail'
   }
 }

@@ -3,30 +3,32 @@
 
     <div class="container flex flex-column">
       <div class="container-time flex flex-center">
-        <p>{{ time }}</p>
+        <!-- <p>{{ time }}</p> -->
+        <typewrite />
         <weather class="container-time-weather" />
       </div>
       <div class="container-search flex flex-center">
         <div class="container-search-box flex flex-center">
           <div class="prefix flex-1 flex flex-center">
-            <svg-icon :name="currentEngine.svg" :title="currentEngine.title" @click="checkEngineStatus" />
+            <svg-icon class="currentEngine" :name="currentEngine.svg" :title="currentEngine.title"
+              @click.stop="checkEngineStatus" />
             <div class="container-search-engine">
               <div :class="['container-search-engine-item', showEngineList ? 'active' : '']"
                 v-for="engine in enginesList" :key="engine.title"
-                @click="currentEngine = engine; showEngineList = false">
+                @click.stop="currentEngine = engine; showEngineList = false">
                 <svg-icon :name="engine.svg" :title="engine.title" />
               </div>
             </div>
           </div>
           <input class="h100" type="text" autofocus v-model="keyword">
           <div class="suffix flex-1 flex flex-center">
-            <svg-icon class="search" name="search" title="搜索" @click="toSearch" />
+            <svg-icon class="search" name="search" title="搜索" @click.stop="(e: KeyboardEvent) => toSearch(e)" />
           </div>
         </div>
       </div>
       <div class="container-widget flex">
         <div class="container-widget-item flex flex-center flex-1" v-for="(widget, index) in widgets" :key="index">
-          <svg-icon :name="widget.svg" :title="widget.title" @click="toWidget(widget)" />
+          <svg-icon :name="widget.svg" :title="widget.title" @click.stop="(e: KeyboardEvent) => toWidget(widget, e)" />
         </div>
       </div>
     </div>
@@ -36,7 +38,9 @@
 import { ref } from 'vue'
 import { IEngine } from '@/types'
 import { icons, engines } from '@/global'
+import { useMetaKey } from '@/hooks'
 import weather from '../components/weather.vue'
+import typewrite from '../components/typewrite.vue'
 
 // 书签组件
 const widgets = ref(icons)
@@ -46,6 +50,7 @@ const enginesList = ref(engines)
 let showEngineList = ref(false)
 const checkEngineStatus = () => {
   showEngineList.value = !showEngineList.value
+  // e.stopPropagation()
 }
 
 // 切换引擎
@@ -55,35 +60,40 @@ let currentEngine = ref({
   url: 'https://www.google.com/search?q='
 })
 
-const toWidget = (widget: IEngine) => {
-  location.href = widget.url
+const toWidget = (widget: IEngine, e: KeyboardEvent) => {
+  window.open(widget.url, useMetaKey(e))
 }
 
 let keyword = ref('')
-window.addEventListener('keyup', (e: any) => {
-  if (e.keyCode === 13) {
-    // 回车
-    toSearch()
+
+
+const toSearch = (e: KeyboardEvent) => {
+  window.open(currentEngine.value.url + keyword.value, useMetaKey(e))
+}
+
+// let time = ref('')
+// const getTime = () => {
+//   var date = new Date();//如果date为13位不需要乘1000
+//   var h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
+//   var m = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
+//   var s = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
+//   time.value = h + m + s
+// }
+
+// getTime()
+// setInterval(() => {
+//   getTime()
+// }, 1000)
+
+window.addEventListener('keyup', (e: KeyboardEvent) => {
+  if (e.key === 'Enter' && keyword.value) {
+    toSearch(e)
   }
 })
+window.addEventListener('click', () => {
+  showEngineList.value = false
+})
 
-const toSearch = () => {
-  location.href = currentEngine.value.url + keyword.value
-}
-
-let time = ref('')
-const getTime = () => {
-  var date = new Date();//如果date为13位不需要乘1000
-  var h = (date.getHours() < 10 ? '0' + date.getHours() : date.getHours()) + ':';
-  var m = (date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()) + ':';
-  var s = date.getSeconds() < 10 ? '0' + date.getSeconds() : date.getSeconds();
-  time.value = h + m + s
-}
-
-getTime()
-setInterval(() => {
-  getTime()
-}, 1000)
 
 
 </script>
@@ -101,20 +111,13 @@ setInterval(() => {
     &-time {
       width: 560px;
       padding: 50px 0px 0px;
-      // font-family: system-ui;
-
       color: var(--font-color);
       position: relative;
 
       p {
-
-        /* CDN 服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
-
         letter-spacing: 5px;
-        // font-family: Source Han Sans CN;
-        font-size: 40px;
-        font-family: "alimama";
-        // font-weight: 400;
+        font-size: 30px;
+        font-family: system-ui;
       }
 
       &-weather {
@@ -172,6 +175,11 @@ setInterval(() => {
         svg {
           width: 1.45em;
           height: 1.45em;
+
+          &:hover {
+            transition: all 0.7s ease-in-out;
+            transform: rotateY(360deg);
+          }
         }
 
         &-item {
@@ -215,6 +223,11 @@ setInterval(() => {
         width: var(--widget-width);
         height: var(--widget-height);
         padding: 0 15px 15px;
+
+        svg:hover {
+          transition: all 0.7s ease-in-out;
+          transform: rotateY(360deg);
+        }
       }
     }
   }

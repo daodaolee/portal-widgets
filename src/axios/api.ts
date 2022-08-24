@@ -8,7 +8,11 @@ export default class api {
   }
 
   public static weather = {
-    getAll: (city:string) => Request.get(`https://restapi.amap.com/v3/weather/weatherInfo?key=78b177c7430f35b6d38c1739dd6895fc&city=${city}&extensions=all`),
-    getNow: (city:string) => Request.get(`https://restapi.amap.com/v3/weather/weatherInfo?key=78b177c7430f35b6d38c1739dd6895fc&city=${city}&extensions=base`)
+    getAll: (city: string) => Request.get(`https://restapi.amap.com/v3/weather/weatherInfo?key=78b177c7430f35b6d38c1739dd6895fc&city=${city}&extensions=all`),
+    getNow: (city: string) => Request.get(`https://restapi.amap.com/v3/weather/weatherInfo?key=78b177c7430f35b6d38c1739dd6895fc&city=${city}&extensions=base`)
+  }
+
+  public static weibo = {
+    get: () => Request.get(`https://api.vvhan.com/api/wbhot`)
   }
 }
