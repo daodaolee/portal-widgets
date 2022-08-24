@@ -95,7 +95,6 @@ window.addEventListener('click', () => {
 })
 
 
-
 </script>
 <style lang="less" scoped>
 .layout {

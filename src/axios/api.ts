@@ -13,6 +13,6 @@ export default class api {
   }
 
   public static weibo = {
-    get: () => Request.get(`https://api.vvhan.com/api/wbhot`)
+    get: () => Request.get('https://api.vvhan.com/api/wbhot')
   }
 }
