@@ -9,6 +9,7 @@
 <script lang="ts" setup>
 import Layout from '@/layout/index.vue'
 import Mode from '@/components/mode.vue'
+
 </script>
 <style lang="less">
 .home {

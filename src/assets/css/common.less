@@ -1,6 +1,17 @@
-@import "reset.less";
-@import "var.less";
-@import "dark.less";
+@import 'reset.less';
+@import 'var.less';
+@import 'dark.less';
+
+/* CDN 服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+@font-face {
+  font-family: 'alimama';
+  font-weight: 500;
+  src: url('//at.alicdn.com/wf/webfont/4untLNJYVQxt/RBnB95AC8h9ZsY1iIFreP.woff2')
+      format('woff2'),
+    url('//at.alicdn.com/wf/webfont/4untLNJYVQxt/41hpnROHKT2hZRbdrX1jY.woff')
+      format('woff');
+  font-display: swap;
+}
 
 .w100 {
   width: 100%;
@@ -20,8 +31,6 @@ body {
   width: 100%;
   height: 100%;
 }
-
-
 
 // 居中loading
 .spin-center {
@@ -146,7 +155,7 @@ body {
 }
 
 .flex-4 {
-  flex: 4
+  flex: 4;
 }
 
 .flex-column {
@@ -171,6 +180,10 @@ body {
 .flex-start-end {
   justify-content: flex-start;
   align-items: flex-end;
+}
+.flex-between-center {
+  justify-content: space-between;
+  align-items: center;
 }
 
 .flex-end-end {

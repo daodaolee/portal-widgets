@@ -50,3 +50,30 @@ export const engines = [{
   svg: 'search-github',
   url: 'https://github.com/search?q='
 }]
+
+export const weatherRange = {
+  day: {
+    '晴': 'weatherDaySun',
+    '多云': 'weatherDayCloudy',
+
+    '小雨': 'weatherDayRain',
+    '小雨-中雨': 'weatherDayRain',
+    '中雨': 'weatherDayRain',
+    '雷阵雨': 'weatherDayRain',
+
+    '下雪': 'weatherDaySnow',
+    '冰雹': 'weatherDayHail'
+  },
+  night: {
+    '晴': 'weatherNightSun',
+    '多云': 'weatherNightCloudy',
+
+    '小雨': 'weatherNightRain',
+    '小雨-中雨': 'weatherNightRain',
+    '中雨': 'weatherNightRain',
+    '雷阵雨': 'weatherNightRain',
+
+    '下雪': 'weatherNightSnow',
+    '冰雹': 'weatherNightHail'
+  }
+}

@@ -1,11 +1,15 @@
 <template>
   <div class="w100 h100 layout">
+
     <div class="container flex flex-column">
+      <div class="container-time flex flex-center">
+        <p>{{ time }}</p>
+        <weather class="container-time-weather" />
+      </div>
       <div class="container-search flex flex-center">
         <div class="container-search-box flex flex-center">
           <div class="prefix flex-1 flex flex-center">
-            <svg-icon :name="currentEngine.svg" :title="currentEngine.title"
-              @click="checkEngineStatus" />
+            <svg-icon :name="currentEngine.svg" :title="currentEngine.title" @click="checkEngineStatus" />
             <div class="container-search-engine">
               <div :class="['container-search-engine-item', showEngineList ? 'active' : '']"
                 v-for="engine in enginesList" :key="engine.title"
@@ -20,11 +24,8 @@
           </div>
         </div>
       </div>
-      <div class="container-time flex flex-center">{{ time }}</div>
-
       <div class="container-widget flex">
         <div class="container-widget-item flex flex-center flex-1" v-for="(widget, index) in widgets" :key="index">
-          <!-- {{ widget.title }} -->
           <svg-icon :name="widget.svg" :title="widget.title" @click="toWidget(widget)" />
         </div>
       </div>
@@ -35,6 +36,8 @@
 import { ref } from 'vue'
 import { IEngine } from '@/types'
 import { icons, engines } from '@/global'
+import weather from '../components/weather.vue'
+
 // 书签组件
 const widgets = ref(icons)
 // 搜索引擎
@@ -92,10 +95,38 @@ setInterval(() => {
   justify-content: center;
 
   .container {
-    padding-top: 350px;
+    padding-top: 200px;
+    align-items: center;
+
+    &-time {
+      width: 560px;
+      padding: 50px 0px 0px;
+      // font-family: system-ui;
+
+      color: var(--font-color);
+      position: relative;
+
+      p {
+
+        /* CDN 服务仅供平台体验和调试使用，平台不承诺服务的稳定性，企业客户需下载字体包自行发布使用并做好备份。 */
+
+        letter-spacing: 5px;
+        // font-family: Source Han Sans CN;
+        font-size: 40px;
+        font-family: "alimama";
+        // font-weight: 400;
+      }
+
+      &-weather {
+        position: absolute;
+        right: 0;
+        // top: 0;
+      }
+    }
 
     &-search {
       position: relative;
+      padding-top: 100px;
 
       &-box {
         width: 560px;
@@ -172,13 +203,6 @@ setInterval(() => {
           }
         }
       }
-    }
-
-    &-time {
-      padding: 50px 0px 0px;
-      font-family: system-ui;
-      letter-spacing: 2px;
-      color: var(--font-color)
     }
 
     &-widget {
