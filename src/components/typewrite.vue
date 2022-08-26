@@ -38,6 +38,10 @@ onMounted(() => {
 </script>
 <style lang="less" scoped>
 .news {
+  position: absolute;
+  left:50%;
+  bottom: 100px;
+  transform: translateX(-50%);
   color: var(--font-color);
   opacity: 0.85;
   &:hover {

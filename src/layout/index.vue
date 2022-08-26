@@ -4,7 +4,6 @@
     <div class="container flex flex-column">
       <div class="container-time flex flex-center">
         <!-- <p>{{ time }}</p> -->
-        <typewrite />
         <weather class="container-time-weather" />
       </div>
       <div class="container-search flex flex-center">
@@ -40,7 +39,6 @@ import { IEngine } from '@/types'
 import { icons, engines } from '@/global'
 import { useMetaKey } from '@/hooks'
 import weather from '../components/weather.vue'
-import typewrite from '../components/typewrite.vue'
 
 // 书签组件
 const widgets = ref(icons)
@@ -133,7 +131,7 @@ window.addEventListener('click', () => {
       &-box {
         width: 560px;
         height: 44px;
-        border: 2px solid var(--svg-color);
+        border: 1.6px solid var(--svg-color);
         border-radius: 20px;
 
         input {

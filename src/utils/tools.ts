@@ -4,3 +4,47 @@ export function weatherMode() {
   const hour = now.getHours()
   return hour < 19 ? 'day' : 'night'
 }
+
+/**
+ * 上下按键控制选中的条目
+ * @param item 当前条目，默认值 -1
+ * @param array 所有条目
+ * @param e 按键
+ */
+export function arrowUpDownChange(item: any, array: any, e: KeyboardEvent, cb: Function) {
+  const up = e.key === 'ArrowUp'
+  const down = e.key === 'ArrowDown'
+  const length = array.value.length
+
+  if (up) {
+    if (item.value === -1 || item.value === 0) {
+      // 默认 或者 第一个
+      item.value = length - 1
+    } else {
+      item.value -= 1
+    }
+  }
+  if (down) {
+    if (item.value === -1 || item.value === length - 1) {
+      // 默认 或者 最后一个
+      item.value = 0
+    } else {
+      item.value += 1
+    }
+  }
+  cb && cb()
+}
+
+// 拍平
+export function flatData(arr: any): any {
+  return [].concat(
+    ...arr.map((item: any) => {
+      if (item.children) {
+        let arr = [].concat(item, ...flatData(item.children))
+        delete item.children
+        return arr
+      }
+      return [].concat(item)
+    })
+  )
+}
