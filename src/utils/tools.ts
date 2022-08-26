@@ -48,3 +48,18 @@ export function flatData(arr: any): any {
     })
   )
 }
+
+/**
+ * 判断系统类型
+ * @returns 系统型号 win / mac
+ */
+export function systemInfo() {
+  var agent = navigator.userAgent.toLowerCase()
+  var isMac = /macintosh|mac os x/i.test(navigator.userAgent)
+  if (agent.indexOf('win') >= 0 || agent.indexOf('wow32') >= 0) {
+    return 'win'
+  }
+  if (isMac) {
+    return 'mac'
+  }
+}

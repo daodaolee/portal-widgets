@@ -1051,7 +1051,7 @@ export const bookmark = [
                 id: '110',
                 index: 20,
                 parentId: '89',
-                title: "小伙伴们 | TRHX'S BLOG",
+                title: '小伙伴们 | TRHX\'S BLOG',
                 url: 'https://www.itrhx.com/friends/'
               },
               {
@@ -1115,7 +1115,7 @@ export const bookmark = [
                 id: '118',
                 index: 28,
                 parentId: '89',
-                title: "Ame's blog",
+                title: 'Ame\'s blog',
                 url: 'https://ame.cool/'
               },
               {
@@ -4909,7 +4909,7 @@ export const bookmark = [
                 id: '560',
                 index: 1,
                 parentId: '558',
-                title: "It's Nicky Case!",
+                title: 'It\'s Nicky Case!',
                 url: 'https://ncase.me/'
               },
               {
@@ -5537,7 +5537,7 @@ export const bookmark = [
                 index: 0,
                 parentId: '629',
                 title:
-                  "第 2 题：['1', '2', '3'].map(parseInt) what & why ? | 木易杨前端进阶",
+                  '第 2 题：[\'1\', \'2\', \'3\'].map(parseInt) what & why ? | 木易杨前端进阶',
                 url: 'https://muyiy.cn/question/js/2.html'
               },
               {

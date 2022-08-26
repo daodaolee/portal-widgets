@@ -1,17 +1,4 @@
-/**
- * 判断系统类型
- * @returns 系统型号 win / mac
- */
-function systemInfo() {
-  var agent = navigator.userAgent.toLowerCase()
-  var isMac = /macintosh|mac os x/i.test(navigator.userAgent)
-  if (agent.indexOf('win') >= 0 || agent.indexOf('wow32') >= 0) {
-    return 'win'
-  }
-  if (isMac) {
-    return 'mac'
-  }
-}
+import { systemInfo } from '@/utils/tools'
 
 export default function (e: KeyboardEvent) {
   const info = systemInfo()

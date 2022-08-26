@@ -28,7 +28,7 @@
 <script lang="ts" setup>
 import { ref, watch, nextTick } from 'vue'
 import { engines, bookmark } from '@/global'
-import { arrowUpDownChange, flatData } from '@/utils/tools'
+import { arrowUpDownChange, flatData, systemInfo } from '@/utils/tools'
 import { useChineseToPinyin, useMetaKey } from '@/hooks'
 
 let showSearchPanel = ref(false)
@@ -38,10 +38,11 @@ let enginesData = ref(engines)
 let currentBookmark: any = ref({})
 window.addEventListener('keydown', (e: KeyboardEvent) => {
   // command + k 或者 esc 快捷键
-  const key1 = e.metaKey
+  const info = systemInfo()
+  const key1 = info === 'win' ? e.ctrlKey : e.metaKey
   const key2 = e.key === 'k'
   const key3 = e.key === 'Escape'
-  if ((key1 && key2) || key3) {
+  if (key1 && key2 || key3) {
     showSearchPanel.value = !showSearchPanel.value
     return
   }
