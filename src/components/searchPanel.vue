@@ -41,9 +41,13 @@ window.addEventListener('keydown', (e: KeyboardEvent) => {
   const info = systemInfo()
   const key1 = info === 'win' ? e.ctrlKey : e.metaKey
   const key2 = e.key === 'k'
-  const key3 = e.key === 'Escape'
-  if (key1 && key2 || key3) {
+  if (key1 && key2) {
     showSearchPanel.value = !showSearchPanel.value
+    return
+  }
+  const key3 = e.key === 'Escape'
+  if (key3) {
+    showSearchPanel.value = false
     return
   }
   if (showSearchPanel.value) {
