@@ -25,23 +25,19 @@
           </div>
         </div>
       </div>
-      <div class="container-widget flex">
-        <div class="container-widget-item flex flex-center flex-1" v-for="(widget, index) in widgets" :key="index">
-          <svg-icon :name="widget.svg" :title="widget.title" @click.stop="(e: KeyboardEvent) => toWidget(widget, e)" />
-        </div>
+      <div class="container-widget flex flex-center">
+        <Widget />
       </div>
     </div>
   </div>
 </template>
 <script lang="ts" setup>
 import { ref } from 'vue'
-import { IEngine } from '@/types'
-import { icons, engines } from '@/global'
+import { engines } from '@/global'
 import { useMetaKey } from '@/hooks'
-import weather from '../components/weather.vue'
+import weather from '@/components/weather.vue'
+import Widget from '@/components/widget.vue'
 
-// 书签组件
-const widgets = ref(icons)
 // 搜索引擎
 const enginesList = ref(engines)
 // 搜索引擎显示隐藏
@@ -58,9 +54,6 @@ let currentEngine = ref({
   url: 'https://www.google.com/search?q='
 })
 
-const toWidget = (widget: IEngine, e: KeyboardEvent) => {
-  window.open(widget.url, useMetaKey(e))
-}
 
 let keyword = ref('')
 
@@ -102,12 +95,12 @@ window.addEventListener('click', () => {
   justify-content: center;
 
   .container {
-    padding-top: 200px;
+    padding-top: 16vh;
     align-items: center;
 
     &-time {
       width: 560px;
-      padding: 50px 0px 0px;
+      // padding: 50px 0px 0px;
       color: var(--font-color);
       position: relative;
 
@@ -147,15 +140,23 @@ window.addEventListener('click', () => {
           padding-left: 3px;
           position: relative;
 
-          svg {
+          .currentEngine {
             width: 1.3em;
             height: 1.3em;
             z-index: 1;
+
+            &:hover {
+              animation: floatY 1s infinite ease-in-out alternate;
+            }
           }
         }
 
         .suffix {
           padding-right: 8px;
+
+          &:hover {
+            animation: floatX 1s infinite ease-in-out alternate;
+          }
 
           svg {
             width: 1.4em;
@@ -209,24 +210,27 @@ window.addEventListener('click', () => {
         }
       }
     }
+  }
+}
 
-    &-widget {
-      width: 1000px;
-      padding-top: 80px;
-      // height: 300px;
-      flex-wrap: wrap;
+@keyframes floatY {
 
-      &-item {
-        width: var(--widget-width);
-        height: var(--widget-height);
-        padding: 0 15px 15px;
+  50% {
+    transform: translateY(-5px)
+  }
 
-        svg:hover {
-          transition: all 0.7s ease-in-out;
-          transform: rotateY(360deg);
-        }
-      }
-    }
+  100% {
+    transform: translateY(5px)
+  }
+}
+
+@keyframes floatX {
+  50% {
+    transform: translateX(-5px);
+  }
+
+  100% {
+    transform: translateX(5px)
   }
 }
 </style>

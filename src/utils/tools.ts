@@ -17,7 +17,7 @@ export function arrowUpDownChange(item: any, array: any, e: KeyboardEvent, cb: F
   const length = array.value.length
 
   if (up) {
-    if (item.value === -1 || item.value === 0) {
+    if (item.value === 0) {
       // 默认 或者 第一个
       item.value = length - 1
     } else {
@@ -25,7 +25,7 @@ export function arrowUpDownChange(item: any, array: any, e: KeyboardEvent, cb: F
     }
   }
   if (down) {
-    if (item.value === -1 || item.value === length - 1) {
+    if (item.value === length - 1) {
       // 默认 或者 最后一个
       item.value = 0
     } else {

@@ -95,3 +95,38 @@ export const weatherRange = {
     '冰雹': 'weatherNightHail'
   }
 }
+
+export const widgetList = [{
+  svg: 'github',
+  url: 'https://github.com/'
+}, {
+  svg: 'juejin',
+  url: 'https://juejin.cn/'
+}, {
+  svg: 'vue',
+  url: 'https://zh-hans.reactjs.org/',
+  relate: {
+    'Vue Router': 'https://router.vuejs.org/zh/',
+    'Pinia': 'https://pinia.vuejs.org/',
+    'Vuex': 'https://vuex.vuejs.org/zh/',
+    'Nuxt': 'https://www.nuxtjs.cn/'
+  }
+}, {
+  svg: 'react',
+  url: 'https://zh-hans.reactjs.org/',
+  relate: {
+    'Redux': 'https://redux.js.org/',
+    'React Redux': 'https://react-redux.js.org/',
+    'React Router': 'https://reactrouter.com/en/main',
+    'Mobx': 'https://zh.mobx.js.org/README.html',
+    'Next': 'https://www.nextjs.cn/'
+  }
+}, {
+  svg: 'webpack',
+  url: 'https://webpack.docschina.org/concepts/',
+  relate: {
+    'Vite': 'https://cn.vitejs.dev/',
+    'Rollup': 'https://www.rollupjs.com/',
+    'Parcel': 'https://zh.parceljs.org/'
+  }
+}]

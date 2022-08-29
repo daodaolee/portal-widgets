@@ -33,7 +33,7 @@ import { useChineseToPinyin, useMetaKey } from '@/hooks'
 
 let showSearchPanel = ref(false)
 // 当前选中的条目
-let isResultActive = ref(-1)
+let isResultActive = ref(0)
 let enginesData = ref(engines)
 let currentBookmark: any = ref({})
 window.addEventListener('keydown', (e: KeyboardEvent) => {
@@ -60,7 +60,7 @@ window.addEventListener('keydown', (e: KeyboardEvent) => {
   // 回车跳转
   if (e.key === 'Enter') {
     if (showEngines.value) {
-      if (isResultActive.value > -1) {
+      if (isResultActive.value > 0) {
         window.open(enginesData.value[isResultActive.value].url + keyword.value, useMetaKey(e))
       } else {
         return
@@ -79,7 +79,7 @@ window.addEventListener('click', (e: any) => {
 })
 
 function clearArrowUpDown() {
-  isResultActive.value = -1
+  isResultActive.value = 0
 }
 // 点击书签面板跳转
 function toSearchBookmark(bookmark: any, e: any) {
@@ -89,7 +89,7 @@ function toSearchBookmark(bookmark: any, e: any) {
 // 监听当前选中书签
 watch(currentBookmark, nv => {
   if (nv) {
-    keyword.value = currentBookmark.value.title
+    // keyword.value = currentBookmark.value.title
   }
 })
 
@@ -140,8 +140,8 @@ function search(e: any) {
   const includesStr = (data: any) => {
     return (
       data.title.includes(keyword.value) ||
-      data.pinyin.includes(keyword.value) ||
-      data.url.includes(keyword.value)
+      data.pinyin.includes(keyword.value)
+      // data.url.includes(keyword.value)
     )
   }
   const data = resultBookmark.value.filter((data: any) => includesStr(data))
@@ -188,13 +188,12 @@ function toSearchEngine(engine: any, e: KeyboardEvent) {
   top: 0;
   left: 0;
   background: var(--bookmark-mask-bg-color);
-  // opacity: 0.9;
+
 
   &-search {
     position: absolute;
     left: 50%;
-    top: 350px;
-    // top: 20vh;
+    margin-top: 18vh;
     transform: translateX(-50%);
     border: 1.6px solid var(--bookmark-border-color);
     border-radius: 10px;
