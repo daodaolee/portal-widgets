@@ -104,12 +104,13 @@ export const widgetList = [{
   url: 'https://juejin.cn/'
 }, {
   svg: 'vue',
-  url: 'https://zh-hans.reactjs.org/',
+  url: 'https://cn.vuejs.org/guide/introduction.html',
   relate: {
     'Vue Router': 'https://router.vuejs.org/zh/',
     'Pinia': 'https://pinia.vuejs.org/',
     'Vuex': 'https://vuex.vuejs.org/zh/',
-    'Nuxt': 'https://www.nuxtjs.cn/'
+    'Nuxt': 'https://www.nuxtjs.cn/',
+    'VitePress': 'https://vitepress.vuejs.org/guide/getting-started'
   }
 }, {
   svg: 'react',
@@ -129,4 +130,19 @@ export const widgetList = [{
     'Rollup': 'https://www.rollupjs.com/',
     'Parcel': 'https://zh.parceljs.org/'
   }
+}, {
+  svg: 'bilibili',
+  url: 'https://www.bilibili.com/'
+}, {
+  svg: 'newspaper',
+  url: 'https://tophub.today/'
+}, {
+  svg: 'netease',
+  url: 'https://music.163.com/'
+}, {
+  svg: 'icons',
+  url: 'https://icones.js.org/'
+}, {
+  svg: 'npm',
+  url: 'https://www.npmjs.com/'
 }]

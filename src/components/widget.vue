@@ -1,8 +1,8 @@
 <template>
-  <div class="widget flex flex-center">
+  <div class="widget flex flex-start">
     <div class="widget-item flex flex-center" v-for="(widget, index) in widgets" :key="index">
-      <div class="widget-item-svg">
-        <svg-icon :name="widget.svg" :title="widget.svg" @click.stop="(e: KeyboardEvent) => toWidget(widget.url, e)" />
+      <div class="widget-item-svg" @click.stop="(e: any) => toWidget(widget.url, e)" >
+        <svg-icon :name="widget.svg" :title="widget.svg" />
       </div>
       <div class="widget-item-extra flex flex-column">
         <div v-for="(extraId, extra) in widget.relate" :key="extraId">
@@ -26,7 +26,7 @@ const toWidget = (url: any, e: KeyboardEvent) => {
 </script>
 <style lang="less" scoped>
 .widget {
-  width: 727px;
+  width: 645px;
   padding-top: 40px;
   flex-wrap: wrap;
 
@@ -45,7 +45,7 @@ const toWidget = (url: any, e: KeyboardEvent) => {
     &-extra {
       position: absolute;
       height: auto;
-      top: 70px;
+      top: 60px;
       left: 50%;
       background: var(--widget-bg-color);
       box-shadow: 0 0 14px var(--widget-shadow-color);
@@ -79,6 +79,7 @@ const toWidget = (url: any, e: KeyboardEvent) => {
 }
 
 .widget-item:hover .widget-item-extra {
+  z-index: 1;
   opacity: 1;
   visibility: visible;
   transform: translate(-50%, 0px);

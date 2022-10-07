@@ -8,6 +8,5 @@ export default function (chinese: string) {
   if (pinyinStringPattern) {
     pinyinStringPattern = pinyinStringPattern.replace(/\s+/g, '');
   }
-  console.log(pinyinStringAll + '-' + pinyinStringPattern)
   return pinyinStringAll + '-' + pinyinStringPattern
 }
